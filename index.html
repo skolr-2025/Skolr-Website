@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">import React, { useState, useEffect } from "react";</p>
+<p class="p1">import { Card, CardContent } from "@/components/ui/card";</p>
+<p class="p1">import { Button } from "@/components/ui/button";</p>
+<p class="p1">import { Input } from "@/components/ui/input";</p>
+<p class="p1">import { Sidebar } from "@/components/ui/sidebar"; // hypothetical sidebar component</p>
+<p class="p2"><br></p>
+<p class="p1">export default function SkolrDashboard() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const [loggedIn, setLoggedIn] = useState(false);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const [username, setUsername] = useState("");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const [password, setPassword] = useState("");</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const [metrics, setMetrics] = useState({</p>
+<p class="p1"><span class="Apple-converted-space">    </span>students: 0,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>courses: 0,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>sessions: 0,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>applications: 0</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>useEffect(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Simulate API call</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const fetchData = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>setMetrics({</p>
+<p class="p1"><span class="Apple-converted-space">          </span>students: 1284,</p>
+<p class="p1"><span class="Apple-converted-space">          </span>courses: 42,</p>
+<p class="p1"><span class="Apple-converted-space">          </span>sessions: 128,</p>
+<p class="p1"><span class="Apple-converted-space">          </span>applications: 87</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}, 1000);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>fetchData();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}, []);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const handleLogin = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (username &amp;&amp; password) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>setLoggedIn(true);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (!loggedIn) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>return (</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div className="flex items-center justify-center h-screen bg-gray-50"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;Card className="w-full max-w-sm p-6 rounded-2xl shadow-md"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;CardContent&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 className="text-2xl font-bold text-center mb-4"&gt;Login to Skolr&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div className="space-y-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;Input</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type="text"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>placeholder="Username"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>value={username}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>onChange={(e) =&gt; setUsername(e.target.value)}</p>
+<p class="p1"><span class="Apple-converted-space">              </span>/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;Input</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type="password"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>placeholder="Password"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>value={password}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>onChange={(e) =&gt; setPassword(e.target.value)}</p>
+<p class="p1"><span class="Apple-converted-space">              </span>/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;Button className="w-full" onClick={handleLogin}&gt;Login&lt;/Button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/CardContent&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/Card&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>return (</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div className="flex h-screen"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{/* Sidebar */}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;aside className="w-64 bg-gray-100 p-4 shadow-md"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2 className="text-2xl font-bold mb-6"&gt;Skolr&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;ul className="space-y-4 text-sm"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;&lt;a href="#" className="hover:text-blue-600"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;&lt;a href="#" className="hover:text-blue-600"&gt;Professor&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;&lt;a href="#" className="hover:text-blue-600"&gt;Advisor&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;&lt;a href="#" className="hover:text-blue-600"&gt;Programs&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;&lt;a href="#" className="hover:text-blue-600"&gt;Settings&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/aside&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>{/* Main Content */}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div className="flex-1 overflow-auto p-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{/* Header */}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div className="text-center mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h1 className="text-3xl font-bold"&gt;Skolr Institute&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p className="text-sm text-gray-600"&gt;Empowering Learning with AI&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>{/* Dashboard Metrics */}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;Card className="bg-white rounded-2xl shadow p-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3 className="text-sm text-gray-500"&gt;Enrolled Students&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p className="text-2xl font-bold"&gt;{metrics.students}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/Card&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;Card className="bg-white rounded-2xl shadow p-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3 className="text-sm text-gray-500"&gt;Courses Offered&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p className="text-2xl font-bold"&gt;{metrics.courses}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/Card&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;Card className="bg-white rounded-2xl shadow p-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3 className="text-sm text-gray-500"&gt;Active Sessions&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p className="text-2xl font-bold"&gt;{metrics.sessions}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/Card&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;Card className="bg-white rounded-2xl shadow p-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3 className="text-sm text-gray-500"&gt;Pending Applications&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p className="text-2xl font-bold"&gt;{metrics.applications}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/Card&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>{/* Cards Section */}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div className="grid grid-cols-1 md:grid-cols-2 gap-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{/* Professor Card */}</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;Card className="rounded-2xl shadow-md"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;CardContent className="p-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;h2 className="text-xl font-semibold mb-2"&gt;Professor&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;p className="text-sm text-gray-700"&gt;Interactive avatar delivering academic content.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;Button className="mt-4"&gt;View Profile&lt;/Button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/CardContent&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/Card&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>{/* Academic Advisor Card */}</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;Card className="rounded-2xl shadow-md"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;CardContent className="p-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;h2 className="text-xl font-semibold mb-2"&gt;Academic Advisor&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;p className="text-sm text-gray-700"&gt;Guidance on course selection and progress.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;Button className="mt-4"&gt;Schedule Meeting&lt;/Button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/CardContent&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/Card&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>{/* Programs Card */}</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;Card className="rounded-2xl shadow-md"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;CardContent className="p-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;h2 className="text-xl font-semibold mb-2"&gt;Programs&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;p className="text-sm text-gray-700"&gt;Explore courses and specializations offered.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;Button className="mt-4"&gt;Browse Programs&lt;/Button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/CardContent&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/Card&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>);</p>
+<p class="p1">}</p>
+</body>
+</html>
